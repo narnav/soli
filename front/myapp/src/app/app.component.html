@@ -1,0 +1,24 @@
+Hello
+
+<!-- {{myProducts|json}} -->
+
+<div *ngFor="let prod of myProducts">
+  desc:{{prod.desc}}
+  Price:{{prod.price}}
+  
+  <button (click)="del(prod.id)">del</button>
+  <button (click)="upd(+price.value,desc.value,+prod.id)">upd</button>
+  <button (click)="buy(prod.price,prod.desc,+prod.id)">add to cart</button>
+</div>
+<hr>
+desc:<input #desc>
+Price:<input #price>
+<button (click)="add(+price.value,desc.value)">add</button>
+
+<button (click)="checkOut()">checkout</button>
+<hr>
+user:<input #user>
+Pwd:<input type="password" #pwd>
+<button (click)="login(pwd.value,user.value)">Login</button>
+<h1>My Cart</h1>
+{{cart|json}}

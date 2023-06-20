@@ -1,0 +1,13 @@
+class CartView(APIView):
+    permission_classes = [IsAuthenticated]
+    def post(self, request):
+        cart_items = request.data
+        print(cart_items)
+        serializer = CartItemSerializer(data=request.data,  context={'user': request.user},many=True)
+        if serializer.is_valid():
+            cart_items = serializer.save()
+        #     # Process the cart items as needed
+        #     # ...
+            return Response("Cart items received and processed successfully.")
+        else:
+            return Response(serializer.errors, status=400)
